@@ -1,6 +1,10 @@
 services:
   - type: web
-    name: ai-study-tool-frontend
-    env: static
-    buildCommand: npm install && npm run build
-    staticPublishPath: build
+    name: ai-study-tool-backend
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port 10000"
+    buildCommandPath: backend
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
